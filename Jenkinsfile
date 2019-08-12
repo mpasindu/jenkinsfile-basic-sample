@@ -1,6 +1,6 @@
+import groovy.json.JsonSlurper
 node {
 
-import groovy.json.JsonSlurper
 
  	// Clean workspace before doing anything
     deleteDir()

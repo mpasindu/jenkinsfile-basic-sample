@@ -19,7 +19,7 @@ node {
 		//println(createResponse)
 		def sysId = createResponse.result.sys_id
 		//println(sysId)
-		//def changeNumber = createResponse.result.number
+		def changeNumber = createResponse.result.number
 		//println(changeNumber)
 		echo changeNumber
 	}

@@ -36,7 +36,7 @@ node {
 	        }
         }
       	stage ('Deploy') {
-            sh "echo 'shell scripts to deploy to server...'"
+	    sh "python /var/lib/jenkins/scripts/approval.py"
       	}
     } catch (err) {
         currentBuild.result = 'FAILED'

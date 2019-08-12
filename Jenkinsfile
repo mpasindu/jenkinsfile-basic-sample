@@ -10,7 +10,7 @@ node {
         	checkout scm
         }
         stage ('Build') {
-		def response = serviceNow_createChange serviceNowConfiguration: [instance: 'clearmedev', producerId: 'de043421db74e340aa76bb423996198b'], credentialsId: 'jenkins-vault', vaultConfiguration: [url: 'http://35.193.246.237:8080']
+		def response = serviceNow_createChange serviceNowConfiguration: [instance: 'clearmedev', producerId: 'de043421db74e340aa76bb423996198b'], credentialsId: 'jenkins-vault'
 def jsonSlurper = new JsonSlurper()
 def createResponse = jsonSlurper.parseText(response.content)
 def sysId = createResponse.result.sys_id

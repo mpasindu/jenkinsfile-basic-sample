@@ -15,8 +15,11 @@ println(response)
 def jsonSlurper = new JsonSlurper()
 
 def createResponse = jsonSlurper.parseText(response.content)
+println(createResponse)
 def sysId = createResponse.result.sys_id
+println(sysId)
 def changeNumber = createResponse.result.number
+println(changeNumber)
         	sh "echo 'shell scripts to build project...'"
         }
         stage ('Tests') {

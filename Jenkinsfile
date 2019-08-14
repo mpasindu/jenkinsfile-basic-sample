@@ -23,6 +23,7 @@ node {
 		//println(changeNumber)
 		echo changeNumber
 		env.cnumber = changeNumber
+		env.sysID = sysId
 
 //		def cmdArray = ["python", "/var/lib/jenkins/scripts/approval.py", changeNumber, sysId]
 //		def cmd = cmdArray.execute()
@@ -43,7 +44,7 @@ node {
 	        }
         }
       	stage ('Deploy') {
-	    sh "python /var/lib/jenkins/scripts/approval.py $cnumber fdfa"
+	    sh "python /var/lib/jenkins/scripts/approval.py $cnumber $sysID"
       	}
     } catch (err) {
         currentBuild.result = 'FAILED'

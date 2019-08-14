@@ -22,8 +22,12 @@ node {
 		def changeNumber = createResponse.result.number
 		//println(changeNumber)
 		echo changeNumber
-		echo ${env.JOB_NAME}
 		env.cnumber = changeNumber
+
+		def cmdArray = ["python", "/var/lib/jenkins/scripts/approval.py", changeNumber, sysId]
+		def cmd = cmdArray.execute()
+		cmd.waitForOrKill(1000)
+		println cmd.text
 	}
 
         stage ('Tests') {

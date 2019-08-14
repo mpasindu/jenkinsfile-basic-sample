@@ -24,10 +24,10 @@ node {
 		echo changeNumber
 		env.cnumber = changeNumber
 
-#		def cmdArray = ["python", "/var/lib/jenkins/scripts/approval.py", changeNumber, sysId]
-#		def cmd = cmdArray.execute()
-#		cmd.waitForOrKill(1000)
-#		println cmd.text
+//		def cmdArray = ["python", "/var/lib/jenkins/scripts/approval.py", changeNumber, sysId]
+//		def cmd = cmdArray.execute()
+//		cmd.waitForOrKill(1000)
+//		println cmd.text
 	}
 
         stage ('Tests') {

@@ -18,15 +18,18 @@ node {
 		def createResponse = jsonSlurper.parseText(response.content)
 		//println(createResponse)
 		def sysId = createResponse.result.sys_id
-		//println(sysId)
+		println(sysId)
 		def changeNumber = createResponse.result.number
 		//println(changeNumber)
 		echo changeNumber
+		echo ${env.JOB_NAME}
+		env.cnumber = changeNumber
 	}
 
         stage ('Tests') {
 	        parallel 'static': {
-	            sh "echo 'shell scripts to run static tests...'"
+	            sh "echo $cnumber"
+		   
 	        },
 	        'unit': {
 	            sh "echo 'shell scripts to run unit tests...'"
@@ -36,7 +39,7 @@ node {
 	        }
         }
       	stage ('Deploy') {
-	    sh "python /var/lib/jenkins/scripts/approval.py"
+	    sh "python /var/lib/jenkins/scripts/approval.py $cnumber"
       	}
     } catch (err) {
         currentBuild.result = 'FAILED'
